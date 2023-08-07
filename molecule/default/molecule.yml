@@ -1,0 +1,30 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+  provider:
+    name: virtualbox
+platforms:
+  - name: instance
+    box: jborean93/WindowsServer2019
+    instance_raw_config_args:
+      - "winrm.transport = 'plaintext'"
+    cpus: 2
+    memory: 4069
+    group:
+      - windows
+provisioner:
+  name: ansible
+  inventory:
+    host_vars:
+      instance:
+        ansible_connection: winrm
+        ansible_winrm_scheme: https
+        ansible_winrm_server_cert_validation: ignore
+        ansible_host: 127.0.0.1
+        ansible_port: 55986
+        ansible_user: vagrant
+        ansible_password: vagrant
+verifier:
+  name: ansible
