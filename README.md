@@ -1,6 +1,6 @@
-# Ansible Role: WIN_IIS
+# Ansible Role: win_iis
 
-Installs IIS on Windows servers
+Installs IIS on a Windows host.
 
 ## Requirements
 
